@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activities",
+  "info": {
+    "name": "Activity"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "project": {
+      "model": "project"
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "initial_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "final_date": {
+      "type": "datetime",
+      "required": false
+    },
+    "alert_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "todo",
+        "doing",
+        "stopped",
+        "paused",
+        "done"
+      ],
+      "default": "todo",
+      "required": true
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "low",
+      "required": true
+    }
+  }
+}
