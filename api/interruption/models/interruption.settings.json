@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "interruptions",
+  "info": {
+    "name": "Interruption"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "initial_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "activity": {
+      "model": "activity",
+      "via": "interruptions"
+    },
+    "final_date": {
+      "type": "datetime"
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "stop",
+        "pause"
+      ],
+      "required": true
+    }
+  }
+}

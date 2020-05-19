@@ -599,6 +599,37 @@
                 "type": "string"
               }
             }
+          },
+          "interruptions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "initial_date",
+                "description",
+                "type"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "initial_date": {
+                  "type": "datetime"
+                },
+                "activity": {
+                  "type": "string"
+                },
+                "final_date": {
+                  "type": "datetime"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -645,6 +676,12 @@
           },
           "project": {
             "type": "string"
+          },
+          "interruptions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

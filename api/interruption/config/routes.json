@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/interruptions",
+      "handler": "interruption.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/interruptions/count",
+      "handler": "interruption.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/interruptions/:id",
+      "handler": "interruption.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/interruptions",
+      "handler": "interruption.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/interruptions/:id",
+      "handler": "interruption.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/interruptions/:id",
+      "handler": "interruption.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

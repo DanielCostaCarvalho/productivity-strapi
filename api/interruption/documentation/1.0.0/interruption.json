@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/projects": {
+    "/interruptions": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Project"
+                    "$ref": "#/components/schemas/Interruption"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Project"
+          "Interruption"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Project"
+                  "$ref": "#/components/schemas/Interruption"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Project"
+          "Interruption"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProject"
+                "$ref": "#/components/schemas/NewInterruption"
               }
             }
           }
         }
       }
     },
-    "/projects/count": {
+    "/interruptions/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Project"
+          "Interruption"
         ],
         "parameters": []
       }
     },
-    "/projects/{id}": {
+    "/interruptions/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Project"
+                  "$ref": "#/components/schemas/Interruption"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Project"
+          "Interruption"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Project"
+                  "$ref": "#/components/schemas/Interruption"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Project"
+          "Interruption"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProject"
+                "$ref": "#/components/schemas/NewInterruption"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Project"
+          "Interruption"
         ],
         "parameters": [
           {
@@ -514,171 +514,102 @@
   },
   "components": {
     "schemas": {
-      "Project": {
+      "Interruption": {
         "required": [
           "id",
-          "scope",
-          "name",
           "initial_date",
-          "active"
+          "description",
+          "type"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "scope": {
-            "type": "string",
-            "enum": [
-              "work",
-              "personal",
-              "study"
-            ]
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
           "initial_date": {
             "type": "datetime"
           },
-          "final_date": {
-            "type": "datetime"
-          },
-          "active": {
-            "type": "boolean",
-            "default": true
-          },
-          "activities": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "description",
-                "initial_date",
-                "alert_date",
-                "status",
-                "priority"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "initial_date": {
-                  "type": "datetime"
-                },
-                "final_date": {
-                  "type": "datetime"
-                },
-                "alert_date": {
-                  "type": "datetime"
-                },
-                "status": {
-                  "type": "string"
-                },
-                "priority": {
-                  "type": "string"
-                },
-                "project": {
-                  "type": "string"
-                },
-                "interruptions": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "user": {
+          "activity": {
             "required": [
               "id",
-              "username",
-              "email"
+              "description",
+              "initial_date",
+              "alert_date",
+              "status",
+              "priority"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "username": {
+              "description": {
                 "type": "string"
               },
-              "email": {
+              "initial_date": {
+                "type": "datetime"
+              },
+              "final_date": {
+                "type": "datetime"
+              },
+              "alert_date": {
+                "type": "datetime"
+              },
+              "status": {
                 "type": "string"
               },
-              "provider": {
+              "priority": {
                 "type": "string"
               },
-              "password": {
+              "project": {
                 "type": "string"
               },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "projects": {
+              "interruptions": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               }
             }
-          }
-        }
-      },
-      "NewProject": {
-        "required": [
-          "scope",
-          "name",
-          "initial_date",
-          "active"
-        ],
-        "properties": {
-          "scope": {
-            "type": "string",
-            "enum": [
-              "work",
-              "personal",
-              "study"
-            ]
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "initial_date": {
-            "type": "datetime"
           },
           "final_date": {
             "type": "datetime"
           },
-          "active": {
-            "type": "boolean",
-            "default": true
-          },
-          "activities": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "user": {
+          "description": {
             "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "stop",
+              "pause"
+            ]
+          }
+        }
+      },
+      "NewInterruption": {
+        "required": [
+          "initial_date",
+          "description",
+          "type"
+        ],
+        "properties": {
+          "initial_date": {
+            "type": "datetime"
+          },
+          "activity": {
+            "type": "string"
+          },
+          "final_date": {
+            "type": "datetime"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "stop",
+              "pause"
+            ]
           }
         }
       }
@@ -686,7 +617,7 @@
   },
   "tags": [
     {
-      "name": "Project"
+      "name": "Interruption"
     }
   ]
 }

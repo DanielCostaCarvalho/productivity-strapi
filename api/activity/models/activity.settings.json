@@ -50,6 +50,10 @@
     "project": {
       "via": "activities",
       "model": "project"
+    },
+    "interruptions": {
+      "via": "activity",
+      "collection": "interruption"
     }
   }
 }
