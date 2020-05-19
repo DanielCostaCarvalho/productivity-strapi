@@ -9,10 +9,6 @@
     "timestamps": true
   },
   "attributes": {
-    "user": {
-      "plugin": "users-permissions",
-      "model": "user"
-    },
     "scope": {
       "type": "enumeration",
       "enum": [
@@ -41,6 +37,15 @@
       "type": "boolean",
       "default": true,
       "required": true
+    },
+    "activities": {
+      "collection": "activity",
+      "via": "project"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "projects"
     }
   }
 }

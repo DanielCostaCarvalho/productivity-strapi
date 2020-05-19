@@ -526,6 +526,69 @@
           "id": {
             "type": "string"
           },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "work",
+              "personal",
+              "study"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "initial_date": {
+            "type": "datetime"
+          },
+          "final_date": {
+            "type": "datetime"
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "description",
+                "initial_date",
+                "alert_date",
+                "status",
+                "priority"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "initial_date": {
+                  "type": "datetime"
+                },
+                "final_date": {
+                  "type": "datetime"
+                },
+                "alert_date": {
+                  "type": "datetime"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "priority": {
+                  "type": "string"
+                },
+                "project": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "user": {
             "required": [
               "id",
@@ -559,32 +622,14 @@
               },
               "role": {
                 "type": "string"
+              },
+              "projects": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
-          },
-          "scope": {
-            "type": "string",
-            "enum": [
-              "work",
-              "personal",
-              "study"
-            ]
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "initial_date": {
-            "type": "datetime"
-          },
-          "final_date": {
-            "type": "datetime"
-          },
-          "active": {
-            "type": "boolean",
-            "default": true
           }
         }
       },
@@ -596,9 +641,6 @@
           "active"
         ],
         "properties": {
-          "user": {
-            "type": "string"
-          },
           "scope": {
             "type": "string",
             "enum": [
@@ -622,6 +664,15 @@
           "active": {
             "type": "boolean",
             "default": true
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user": {
+            "type": "string"
           }
         }
       }

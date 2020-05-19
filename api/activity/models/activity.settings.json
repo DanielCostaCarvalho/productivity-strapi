@@ -9,9 +9,6 @@
     "timestamps": true
   },
   "attributes": {
-    "project": {
-      "model": "project"
-    },
     "description": {
       "type": "string",
       "required": true
@@ -49,6 +46,10 @@
       ],
       "default": "low",
       "required": true
+    },
+    "project": {
+      "via": "activities",
+      "model": "project"
     }
   }
 }

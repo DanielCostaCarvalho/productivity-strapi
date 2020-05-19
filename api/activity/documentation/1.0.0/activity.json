@@ -527,6 +527,38 @@
           "id": {
             "type": "string"
           },
+          "description": {
+            "type": "string"
+          },
+          "initial_date": {
+            "type": "datetime"
+          },
+          "final_date": {
+            "type": "datetime"
+          },
+          "alert_date": {
+            "type": "datetime"
+          },
+          "status": {
+            "type": "string",
+            "default": "todo",
+            "enum": [
+              "todo",
+              "doing",
+              "stopped",
+              "paused",
+              "done"
+            ]
+          },
+          "priority": {
+            "type": "string",
+            "default": "low",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
           "project": {
             "required": [
               "id",
@@ -537,9 +569,6 @@
             ],
             "properties": {
               "id": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               },
               "scope": {
@@ -559,40 +588,17 @@
               },
               "active": {
                 "type": "boolean"
+              },
+              "activities": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user": {
+                "type": "string"
               }
             }
-          },
-          "description": {
-            "type": "string"
-          },
-          "initial_date": {
-            "type": "datetime"
-          },
-          "final_date": {
-            "type": "datetime"
-          },
-          "alert_date": {
-            "type": "datetime"
-          },
-          "status": {
-            "type": "string",
-            "default": "todo",
-            "enum": [
-              "todo",
-              "doing",
-              "stopped",
-              "paused",
-              "done"
-            ]
-          },
-          "priority": {
-            "type": "string",
-            "default": "low",
-            "enum": [
-              "low",
-              "medium",
-              "high"
-            ]
           }
         }
       },
@@ -605,9 +611,6 @@
           "priority"
         ],
         "properties": {
-          "project": {
-            "type": "string"
-          },
           "description": {
             "type": "string"
           },
@@ -639,6 +642,9 @@
               "medium",
               "high"
             ]
+          },
+          "project": {
+            "type": "string"
           }
         }
       }

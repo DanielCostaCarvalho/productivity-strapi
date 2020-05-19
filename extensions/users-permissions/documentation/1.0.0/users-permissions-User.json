@@ -1244,6 +1244,50 @@
                 }
               }
             }
+          },
+          "projects": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "scope",
+                "name",
+                "initial_date",
+                "active"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "initial_date": {
+                  "type": "datetime"
+                },
+                "final_date": {
+                  "type": "datetime"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "activities": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1281,6 +1325,12 @@
           },
           "role": {
             "type": "string"
+          },
+          "projects": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

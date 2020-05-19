@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/18/2020 11:23:52 PM"
+    "x-generation-date": "05/19/2020 12:30:37 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3238,6 +3238,38 @@
           "id": {
             "type": "string"
           },
+          "description": {
+            "type": "string"
+          },
+          "initial_date": {
+            "type": "datetime"
+          },
+          "final_date": {
+            "type": "datetime"
+          },
+          "alert_date": {
+            "type": "datetime"
+          },
+          "status": {
+            "type": "string",
+            "default": "todo",
+            "enum": [
+              "todo",
+              "doing",
+              "stopped",
+              "paused",
+              "done"
+            ]
+          },
+          "priority": {
+            "type": "string",
+            "default": "low",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
           "project": {
             "required": [
               "id",
@@ -3248,9 +3280,6 @@
             ],
             "properties": {
               "id": {
-                "type": "string"
-              },
-              "user": {
                 "type": "string"
               },
               "scope": {
@@ -3270,40 +3299,17 @@
               },
               "active": {
                 "type": "boolean"
+              },
+              "activities": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user": {
+                "type": "string"
               }
             }
-          },
-          "description": {
-            "type": "string"
-          },
-          "initial_date": {
-            "type": "datetime"
-          },
-          "final_date": {
-            "type": "datetime"
-          },
-          "alert_date": {
-            "type": "datetime"
-          },
-          "status": {
-            "type": "string",
-            "default": "todo",
-            "enum": [
-              "todo",
-              "doing",
-              "stopped",
-              "paused",
-              "done"
-            ]
-          },
-          "priority": {
-            "type": "string",
-            "default": "low",
-            "enum": [
-              "low",
-              "medium",
-              "high"
-            ]
           }
         }
       },
@@ -3316,9 +3322,6 @@
           "priority"
         ],
         "properties": {
-          "project": {
-            "type": "string"
-          },
           "description": {
             "type": "string"
           },
@@ -3350,6 +3353,9 @@
               "medium",
               "high"
             ]
+          },
+          "project": {
+            "type": "string"
           }
         }
       },
@@ -3364,6 +3370,69 @@
         "properties": {
           "id": {
             "type": "string"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "work",
+              "personal",
+              "study"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "initial_date": {
+            "type": "datetime"
+          },
+          "final_date": {
+            "type": "datetime"
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "description",
+                "initial_date",
+                "alert_date",
+                "status",
+                "priority"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "initial_date": {
+                  "type": "datetime"
+                },
+                "final_date": {
+                  "type": "datetime"
+                },
+                "alert_date": {
+                  "type": "datetime"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "priority": {
+                  "type": "string"
+                },
+                "project": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "user": {
             "required": [
@@ -3398,32 +3467,14 @@
               },
               "role": {
                 "type": "string"
+              },
+              "projects": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
-          },
-          "scope": {
-            "type": "string",
-            "enum": [
-              "work",
-              "personal",
-              "study"
-            ]
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "initial_date": {
-            "type": "datetime"
-          },
-          "final_date": {
-            "type": "datetime"
-          },
-          "active": {
-            "type": "boolean",
-            "default": true
           }
         }
       },
@@ -3435,9 +3486,6 @@
           "active"
         ],
         "properties": {
-          "user": {
-            "type": "string"
-          },
           "scope": {
             "type": "string",
             "enum": [
@@ -3461,6 +3509,15 @@
           "active": {
             "type": "boolean",
             "default": true
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user": {
+            "type": "string"
           }
         }
       },
@@ -3553,6 +3610,12 @@
                 },
                 "role": {
                   "type": "string"
+                },
+                "projects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -3648,6 +3711,50 @@
                 }
               }
             }
+          },
+          "projects": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "scope",
+                "name",
+                "initial_date",
+                "active"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "initial_date": {
+                  "type": "datetime"
+                },
+                "final_date": {
+                  "type": "datetime"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "activities": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -3685,6 +3792,12 @@
           },
           "role": {
             "type": "string"
+          },
+          "projects": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
